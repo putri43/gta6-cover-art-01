@@ -1,0 +1,188 @@
+/* Vice City Cover Studio — dark studio chrome around a sunset poster. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #12041f;
+  color: #fdf6ec;
+  font: 15px/1.45 "Helvetica Neue", Arial, sans-serif;
+}
+.app { display: flex; min-height: 100vh; }
+.controls {
+  width: 348px;
+  flex: none;
+  padding: 20px 20px 32px;
+  background: #1b0b33;
+  border-right: 3px solid #ff2975;
+  overflow-y: auto;
+}
+.controls h1 {
+  margin: 0;
+  font: 900 26px/1.05 "Arial Black", Arial, sans-serif;
+  letter-spacing: 0.5px;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 41, 117, 0.7);
+}
+.controls h1 span {
+  display: block;
+  background: linear-gradient(90deg, #ffd319, #ff2975, #8c1eff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline { color: #d9c8f5; margin: 8px 0 4px; }
+.controls h2 {
+  margin: 20px 0 8px;
+  font: 900 13px/1.2 "Arial Black", Arial, sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffd319;
+}
+.field { display: block; margin: 8px 0; color: #d9c8f5; font-size: 13px; }
+.field input[type="text"], .field select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #5b3a8c;
+  border-radius: 8px;
+  background: #2a1350;
+  color: #fff;
+  font: inherit;
+}
+.field input[type="range"] { width: 100%; accent-color: #ff2975; }
+.check { display: block; margin: 6px 0; color: #e8dcfb; cursor: pointer; }
+.check input { accent-color: #ff2975; margin-right: 6px; }
+.hint { color: #b9a3dd; font-size: 13px; margin: 4px 0 8px; }
+.picker { display: flex; flex-wrap: wrap; gap: 6px; }
+.pick {
+  padding: 7px 10px;
+  border: 1px solid #5b3a8c;
+  border-radius: 8px;
+  background: #2a1350;
+  color: #e8dcfb;
+  font: 600 13px/1.2 inherit;
+  cursor: pointer;
+}
+.pick:hover { border-color: #ff2975; }
+.pick.active {
+  background: linear-gradient(90deg, #ff2975, #ff8a00);
+  border-color: transparent;
+  color: #fff;
+}
+.pick.grade:nth-child(1).active { background: linear-gradient(90deg, #ff9a3d, #7b2ff7); }
+.pick.grade:nth-child(2).active { background: linear-gradient(90deg, #00e5ff, #ff2fb3); }
+.pick.grade:nth-child(3).active { background: linear-gradient(90deg, #ffd319, #ff8a00); color: #2a1500; }
+.pick.grade:nth-child(4).active { background: linear-gradient(90deg, #00c6ff, #0072ff); }
+.pick.grade:nth-child(5).active { background: linear-gradient(90deg, #8a7bd8, #12081f); }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.slot {
+  padding: 8px;
+  border: 1px dashed #5b3a8c;
+  border-radius: 8px;
+  background: #241145;
+  text-align: center;
+}
+.slot .thumb {
+  display: block;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff9a3d, #ff2975 55%, #7b2ff7);
+  font-size: 22px;
+  color: #fff;
+}
+.slotName { display: block; margin: 6px 0; font-size: 12px; color: #d9c8f5; word-break: break-all; }
+.slotBtn {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #3d2273;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+button { font: inherit; }
+.wide {
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px 10px;
+  border: 1px solid #5b3a8c;
+  border-radius: 8px;
+  background: #2a1350;
+  color: #fff;
+  cursor: pointer;
+}
+.wide:hover { border-color: #ff2975; }
+.export {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px 10px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff2975, #ff8a00);
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(255, 41, 117, 0.45);
+}
+.export:hover { filter: brightness(1.1); }
+.row { display: flex; gap: 8px; margin-top: 8px; }
+.row button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #5b3a8c;
+  border-radius: 8px;
+  background: #2a1350;
+  color: #fff;
+  cursor: pointer;
+}
+.row button:disabled { opacity: 0.4; cursor: default; }
+#status { min-height: 20px; color: #8dff9e; font-size: 13px; }
+.fine { color: #8f7bb5; font-size: 12px; }
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 24px;
+  background:
+    radial-gradient(900px 500px at 80% 0%, rgba(255, 41, 117, 0.25), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(255, 154, 61, 0.22), transparent 60%),
+    #12041f;
+}
+#preview {
+  position: sticky;
+  top: 24px;
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
+  border: 3px solid #fdf6ec;
+  outline: 2px solid #ff2975;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.panelStrip { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.panelChip {
+  padding: 6px 12px;
+  border: 1px solid #5b3a8c;
+  border-radius: 999px;
+  background: #2a1350;
+  color: #e8dcfb;
+  cursor: pointer;
+}
+.panelChip.active { background: #ff2975; border-color: transparent; color: #fff; }
+/* Screenshot mode: the cover alone, edge to edge. */
+body.shot-cover { background: #12041f; }
+body.shot-cover .controls,
+body.shot-cover .panelStrip { display: none; }
+body.shot-cover .app { display: block; }
+body.shot-cover .stage { padding: 0; background: #12041f; }
+body.shot-cover #preview {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  max-height: none;
+}
